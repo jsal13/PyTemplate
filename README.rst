@@ -14,7 +14,8 @@ How Do I Use This?
 2. In the root, create the poetry venv.  ``poetry install``.
 3. Use the Poetry Shell to open the project in VSCode.  ``poetry shell``, then ``code .``.
     - It will probably work in other IDEs, but I haven't tried it yet.
-4. To use Sphinx, edit the `docs/conf.py` file in a few places: 
+4. To install the pre-commit checks for git, run ``pre-commit install``.
+4. To use Sphinx, edit the `docs/conf.py` file in a few places:
     - Replace "pytemplate" with the name of your module/package.
     - Line 59 has the choice of theme.
 
@@ -40,8 +41,7 @@ What does this include?
     - Pytest_ for testing and Pytest-Cov_ for coverage
 
 - Documentation
-    - Sphinx_ for an auto-documenting tool
-        - Uses Sphinx-AutoAPI_ to generate things automatically
+    - Sphinx_ with Sphinx-AutoAPI_ to generate things automatically
 
 What's this XYZ Config file?
 =====================
@@ -58,11 +58,12 @@ What Still Needs Work?
 - Docker + Docker-compose support.
 - Tox integration.
 
-.. _Poetry: https://python-poetry.org/docs/basic-usage/
-.. _PyLint: https://pylint.org/
 .. _Black: https://github.com/psf/black/
 .. _flake8: https://flake8.pycqa.org/en/latest/
-.. _Pytest: https://docs.pytest.org/en/6.2.x/
+.. _mypy: http://mypy-lang.org/
+.. _Poetry: https://python-poetry.org/docs/basic-usage/
+.. _PyLint: https://pylint.org/
 .. _Pytest-Cov: https://pytest-cov.readthedocs.io/en/latest/
-.. _Sphinx: https://www.sphinx-doc.org/en/master/usage/quickstart.html
+.. _Pytest: https://docs.pytest.org/en/6.2.x/
 .. _Sphinx-AutoAPI: https://github.com/readthedocs/sphinx-autoapi
+.. _Sphinx: https://www.sphinx-doc.org/en/master/usage/quickstart.html
