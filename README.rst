@@ -49,6 +49,8 @@ What's this XYZ Config file?
 - ``.pre-commit-config``: Required my ``pre-commit``, read more `here <https://pre-commit.com/#intro>`_.
 - ``pyproject.toml``: The new standard for Python configuation.
 - ``poetry.lock``: A poetry file which contains specifics about what's installed.  Poetry generates this when you install it.
+- ``.vscode/``: A folder for custom vscode configurations.
+
 
 What Still Needs Work?
 ======================
