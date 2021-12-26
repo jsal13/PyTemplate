@@ -15,9 +15,11 @@ How Do I Use This?
 3. Use the Poetry Shell to open the project in VSCode.  ``poetry shell``, then ``code .``.
     - It will probably work in other IDEs, but I haven't tried it yet.
 4. To install the pre-commit checks for git, run ``pre-commit install``.
-4. To use Sphinx, edit the `docs/conf.py` file in a few places:
+5. To prepare to use documentation with Sphinx, edit the `docs/conf.py` file in a few places:
     - Replace "pytemplate" with the name of your module/package.
     - Line 59 has the choice of theme.
+6. To run Sphinx, run the makefile in ``docs``.  For example, ``cd docs && make html``.
+    - On Windows, you can use ``.\docs\make.bat html``.
 
 **Notes**:
     - To Remove the Vertical Line that's at Column 88 for VSCode, remove the "Editor Rules" line in ``.vscode/settings.json``.
