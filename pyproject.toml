@@ -20,12 +20,11 @@ Sphinx = "^4.3.2"
 numpydoc = "^1.1.0"
 sphinx-rtd-theme = "^1.0.0"
 sphinx-autoapi = "^1.8.4"
-
+tox = "^3.24.4"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
-
 
 [tool.pylint.format]
 max-line-length = "88"
@@ -94,3 +93,20 @@ exclude = '''
 '''
 
 [tool.pyright]
+
+
+# See https://tox.wiki/en/latest/example/basic.html#pyproject-toml-tox-legacy-ini
+[tool.tox]
+legacy_tox_ini = """
+[tox]
+envlist = py39
+isolated_build = True
+
+[testenv]
+deps =
+  pytest
+  pytest-cov
+
+commands = pytest --cov=pytemplate tests/
+    coverage report -m
+"""

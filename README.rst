@@ -10,16 +10,24 @@ What is this?
 How Do I Use This?
 ==================
 
+First...
+--------
+    - Rename "pytemplate" with the name of your package.
+    - Find-Replace all uses of "pytemplate" with the name of your package in this project.
+
+Then...
+-------
+In your terminal,
+
 1. Install Poetry.  ``pip install poetry``.
 2. In the root, create the poetry venv.  ``poetry install``.
 3. Use the Poetry Shell to open the project in VSCode.  ``poetry shell``, then ``code .``.
     - It will probably work in other IDEs, but I haven't tried it yet.
-4. To install the pre-commit checks for git, run ``pre-commit install``.
-5. To prepare to use documentation with Sphinx, edit the `docs/conf.py` file in a few places:
-    - Replace "pytemplate" with the name of your module/package.
-    - Line 59 has the choice of theme.
-6. To run Sphinx, run the makefile in ``docs``.  For example, ``cd docs && make html``.
+4. (*Optional*) To install the pre-commit checks for git, run ``pre-commit install``.
+5. (*Optional*) To run Sphinx, run the makefile in ``docs``.  For example, ``cd docs && make html``.
     - On Windows, you can use ``.\docs\make.bat html``.
+6. (*Optional*) To run ``tox``, use the command ``tox``.  To configure this, check out its section in ``pyproject.toml``
+7. (*Optional*) If you want to Dockerize anything, I've included a ``Dockerfile`` for using Poetry and Python, a ``docker-entrypoint.sh`` for exec, and a basic ``docker-compose`` file for composition
 
 **Notes**:
     - To Remove the Vertical Line that's at Column 88 for VSCode, remove the "Editor Rules" line in ``.vscode/settings.json``.
@@ -41,28 +49,32 @@ What does this include?
 
 - Testing Integration
     - Pytest_ for testing and Pytest-Cov_ for coverage
+    - Tox_ for venv management and testing
 
 - Documentation
     - Sphinx_ with Sphinx-AutoAPI_ to generate things automatically
+
+- Containerization
+    - Docker_ and docker-compose to create containers if needed.
 
 What's this XYZ Config file?
 =====================
 - ``.flake8``: Because of `this frustrating thread <https://github.com/PyCQA/flake8/issues/234>`_.
 - ``.pre-commit-config``: Required my ``pre-commit``, read more `here <https://pre-commit.com/#intro>`_.
-- ``pyproject.toml``: The new standard for Python configuation.
+- ``pyproject.toml``: The new standard for Python configuation.  **There's a lot you can edit in here, so check it out.**
 - ``poetry.lock``: A poetry file which contains specifics about what's installed.  Poetry generates this when you install it.
 - ``.vscode/``: A folder for custom vscode configurations.
+- ``Dockerfile``, ``docker-entrypoint.sh``, ``docker-compose.yaml``: These are all Docker-related files, all optional unless you'd like to use Docker.
 
 
 What Still Needs Work?
 ======================
 - Better Pytest examples.
 - There is a weird bug in VSCode that sometimes makes Pylance extremely slow on my PC.  Check this out.
-- CI/CD.
-- Docker + Docker-compose support.
-- Tox integration.
+- Github Actions.
 
 .. _Black: https://github.com/psf/black/
+.. _Docker: https://www.docker.com/
 .. _flake8: https://flake8.pycqa.org/en/latest/
 .. _mypy: http://mypy-lang.org/
 .. _Poetry: https://python-poetry.org/docs/basic-usage/
@@ -71,3 +83,4 @@ What Still Needs Work?
 .. _Pytest: https://docs.pytest.org/en/6.2.x/
 .. _Sphinx-AutoAPI: https://github.com/readthedocs/sphinx-autoapi
 .. _Sphinx: https://www.sphinx-doc.org/en/master/usage/quickstart.html
+.. _Tox: https://tox.wiki/en/latest/
