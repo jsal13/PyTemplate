@@ -44,6 +44,7 @@ good-names = [
   "tz",
   "n",
   "m",
+  "df"
 ]
 
 # https://black.readthedocs.io/en/stable/guides/using_black_with_other_tools.html#pylint
