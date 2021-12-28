@@ -6,6 +6,7 @@ authors = ["James Salvatore <jimmy.c.salvatore@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = ">=3.9,<3.11"
+invoke = "^1.6.0"
 
 [tool.poetry.dev-dependencies]
 black = "^21.12b0"

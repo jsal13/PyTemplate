@@ -29,41 +29,41 @@ In your terminal,
 
     poetry install
 
-3. Use the Poetry Shell to open the project in VSCode::
+3. Initialize the repo::
+
+    invoke init
+
+4. Use the Poetry Shell to open the project in VSCode::
 
     poetry shell
     code .
 
+**Important Note**: When committing to git, pre-commit may format your code and say the commit failed; simply re-add the files and run the commit again and it should pass. This is intended behavior for pre-commit.  You may remove pre-commit at your own risk with the commands::
+
+    pre-commit uninstall
+
 (Optional) Some Other Things You Can Do
 ----------------------------------------
+
+For many optional things, we use Invoke_ to call basic commands.  See the docs and the ``tasks.py`` file in the root directory for more information on Invoke.
 
 - To Remove the Vertical Line that's at Column 88 for VSCode, remove the "Editor Rules" line in ``.vscode/settings.json``
 
 - To Remove / Modify the Github Actions file, delete / edit the ``.github\workflows\sample-github-action.yml`` file.
 
 - To run tests, you can use the VSCode test tab on the left-hand side (looks like a beaker)
-    - To run coverage, you can use the terminal command::
+    - To run testing + coverage, on the terminal::
 
-        pytest --cov=pyproject tests/
+        invoke test
 
-- To install the pre-commit checks for git, run::
+- To run Sphinx, use the command::
 
-     pre-commit install
-
-     # !!Note: Precommit may format your code and say the commit failed,
-     # Re-add the files and run the commit again and it should pass.
-     # This is intended.  It formats the files but doesn't re-add them itself.
-
-- To run Sphinx, run the makefile in ``docs``.  For example::
-
-    cd docs && make html
-
-    # On windows you can use:
-    # .\docs\make.bat html
+    invoke docs
 
 - To configure Tox, check out its section in ``pyproject.toml`` and run::
 
     tox
+    # or `invoke tox`
 
 - If you want to Dockerize anything, I've included a ``Dockerfile`` for using Poetry and Python, a ``docker-entrypoint.sh`` for exec, and a basic ``docker-compose`` file for composition
 
@@ -86,6 +86,9 @@ What does this include?
 - Documentation
     - Sphinx_ with Sphinx-AutoAPI_ to generate things automatically
 
+- CLI
+    - Invoke_ allows for easy CLI creation
+
 - Containerization
     - Docker_ and docker-compose to create containers if needed
 
@@ -99,17 +102,19 @@ What's this XYZ Config file?
 - ``.vscode/``: A folder for custom vscode configurations
 - ``Dockerfile``, ``docker-entrypoint.sh``, ``docker-compose.yaml``: These are all Docker-related files, all optional unless you'd like to use Docker
 - ``.github/workflows/sample-github-action.yml`` is a sample for `Github Actions`_ which currently runs tox (and therefore Pytest), but can be configured to run whatever you'd like
+- ``tasks.py`` is used by Invoke_ to create CLI commands, check out the link below to create your own
 
 
 What Still Needs Work?
 ======================
+- **Currently, it seems that Pylint is potentially causing VSC to be extremely slow when linting, lagging minutes behind typing.  I'm looking into solutions for this but have disabled it for now.**
 - Better Pytest examples.
-- There is a weird bug in VSCode that sometimes makes Pylance extremely slow on my PC.  Check this out.
 
 .. _Black: https://github.com/psf/black/
 .. _Docker: https://www.docker.com/
 .. _flake8: https://flake8.pycqa.org/en/latest/
 .. _Github Actions: https://github.com/features/actions
+.. _Invoke: https://docs.pyinvoke.org/en/stable/index.html
 .. _mypy: http://mypy-lang.org/
 .. _Poetry: https://python-poetry.org/docs/basic-usage/
 .. _PyLint: https://pylint.org/
