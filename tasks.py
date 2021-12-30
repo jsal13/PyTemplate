@@ -11,6 +11,7 @@ from invoke import task
 
 @task
 def docs(context):
+    """Generate Sphinx documentation."""
     if os.name == "nt":  # if windows...
         context.run(".\\docs\\make.bat html")
     else:
@@ -19,19 +20,26 @@ def docs(context):
 
 @task
 def test(context):
+    """Run Pytest."""
     context.run("pytest --cov=pytemplate tests/")
 
 
 @task
 def install_precommit(context):
+    """Install pre-commit into githooks."""
     context.run("pre-commit install")
 
 
 @task
 def tox(context):
+    """Run Tox."""
     context.run("tox")
 
 
 @task(pre=[install_precommit])
-def init(context):
+def init(_context):
+    """Init the repository.
+
+    - Install pre-commit hooks.
+    """
     print("Installing pre-commit...")
