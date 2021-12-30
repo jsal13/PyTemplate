@@ -78,6 +78,8 @@ What does this include?
     - Black_ is an uncompromising formatter
     - flake8_ is a style guide enforcement tool which encludes McCabe (complexity checker)
     - mypy_ is a static type checker (enforces type hints)
+    - pydocstyle_ is a docstring linter
+    - isort_ sorts imports
 
 - Testing Integration
     - Pytest_ for testing and Pytest-Cov_ for coverage
@@ -115,8 +117,10 @@ What Still Needs Work?
 .. _flake8: https://flake8.pycqa.org/en/latest/
 .. _Github Actions: https://github.com/features/actions
 .. _Invoke: https://docs.pyinvoke.org/en/stable/index.html
+.. _isort: https://pycqa.github.io/isort/
 .. _mypy: http://mypy-lang.org/
 .. _Poetry: https://python-poetry.org/docs/basic-usage/
+.. _pydocstyle: http://www.pydocstyle.org/en/stable/
 .. _PyLint: https://pylint.org/
 .. _Pytest-Cov: https://pytest-cov.readthedocs.io/en/latest/
 .. _Pytest: https://docs.pytest.org/en/6.2.x/

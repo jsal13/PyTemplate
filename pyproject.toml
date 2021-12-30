@@ -7,6 +7,7 @@ authors = ["James Salvatore <jimmy.c.salvatore@gmail.com>"]
 [tool.poetry.dependencies]
 python = ">=3.9,<3.11"
 invoke = "^1.6.0"
+pydocstyle = "^6.1.1"
 
 [tool.poetry.dev-dependencies]
 black = "^21.12b0"
@@ -22,13 +23,25 @@ numpydoc = "^1.1.0"
 sphinx-rtd-theme = "^1.0.0"
 sphinx-autoapi = "^1.8.4"
 tox = "^3.24.4"
+isort = "^5.10.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
+
+# ========================================
+# PYLINT
+# For general linting.
+# > # https://docs.pytest.org/en/latest/customize.html?highlight=pyproject#pyproject-toml
+# > https://black.readthedocs.io/en/stable/guides/using_black_with_other_tools.html#pylint
+# ========================================
 [tool.pylint.format]
 max-line-length = "88"
+
+[tool.pylint.ini_options]
+testpaths = ["tests"]
+ignore = [".tox", ".direnv", "python_venv"]
 
 [tool.pylint.BASIC]
 good-names = [
@@ -45,14 +58,18 @@ good-names = [
   "tz",
   "n",
   "m",
-  "df"
+  "df",
 ]
 
-# https://black.readthedocs.io/en/stable/guides/using_black_with_other_tools.html#pylint
 [tool.pylint.messages_control]
 disable = "C0330, C0326"
 
-# https://pydantic-docs.helpmanual.io/mypy_plugin/#configuring-the-plugin
+
+# ========================================
+# MYPY
+# > For type-hint checking.
+# > https://pydantic-docs.helpmanual.io/mypy_plugin/#configuring-the-plugin
+# ========================================
 [tool.mypy]
 plugins = ["pydantic.mypy"]
 
@@ -65,12 +82,22 @@ no_implicit_reexport = true
 # For strinct mypy...
 disallow_untyped_defs = true
 
+
+# ========================================
+# PYDANTIC-MYPY
+# > Integrating pydantic into mypy.
+# ========================================
 [tool.pydantic-mypy]
 init_forbid_extra = true
 init_typed = true
 warn_required_dynamic_aliases = true
 warn_untyped_fields = true
 
+
+# ========================================
+# BLACK
+# > For opinionated formatting.
+# ========================================
 [tool.black]
 target-version = ['py39']
 include = '\.pyi?$'
@@ -94,10 +121,18 @@ exclude = '''
 )
 '''
 
+# ========================================
+# PYRIGHT
+# > To stop a "pyright" warning that it's not in here.
+# ========================================
 [tool.pyright]
 
 
-# See https://tox.wiki/en/latest/example/basic.html#pyproject-toml-tox-legacy-ini
+# ========================================
+# TOX
+# > For standardized texting.
+# > https://tox.wiki/en/latest/example/basic.html#pyproject-toml-tox-legacy-ini
+# ========================================
 [tool.tox]
 legacy_tox_ini = """
 [tox]
@@ -112,3 +147,45 @@ deps =
 commands = pytest --cov=pytemplate tests/
     coverage report -m
 """
+
+
+# ========================================
+# ISORT
+# > For sorting imports.
+# > https://timothycrosley.github.io/isort/
+# ========================================
+[tool.isort]
+
+skip = [
+  '.bzr',
+  '.direnv',
+  '.eggs',
+  '.git',
+  '.hg',
+  '.mypy_cache',
+  '.nox',
+  '.pants.d',
+  '.svn',
+  '.tox',
+  '.venv',
+  '_build',
+  'buck-out',
+  'build',
+  'dist',
+  'node_modules',
+  'venv',
+  'python_venv',
+]
+
+skip_gitignore = true
+line_length = 88
+profile = "black"
+
+# ========================================
+# PYDOCSTYLE
+# > For linting docstrings.
+# > http://www.pydocstyle.org/en/stable/usage.html
+# ========================================
+[pydocstyle]
+inherit = false
+# ignore = D100

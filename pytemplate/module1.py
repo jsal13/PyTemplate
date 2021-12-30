@@ -6,7 +6,8 @@ from typing import Optional
 
 @dataclass(frozen=True, eq=True)
 class Node:
-    """Node object.
+    """
+    Node object.
 
     Parameters
     ----------
