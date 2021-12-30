@@ -60,6 +60,8 @@ good-names = [
   "n",
   "m",
   "df",
+  "f",
+  "c",
 ]
 
 [tool.pylint.messages_control]
