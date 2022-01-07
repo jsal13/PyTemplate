@@ -60,6 +60,8 @@ good-names = [
   "n",
   "m",
   "df",
+  "f",
+  "c",
 ]
 
 [tool.pylint.messages_control]
@@ -72,7 +74,7 @@ disable = "C0330, C0326"
 # > https://pydantic-docs.helpmanual.io/mypy_plugin/#configuring-the-plugin
 # ========================================
 [tool.mypy]
-plugins = ["pydantic.mypy"]
+plugins = ["pydantic.mypy", "numpy.typing.mypy_plugin"]
 
 follow_imports = "silent"
 warn_redundant_casts = true
@@ -83,6 +85,25 @@ no_implicit_reexport = true
 # For strinct mypy...
 disallow_untyped_defs = true
 
+[[tool.mypy.overrides]]
+module = [
+  "altair",
+  "invoke",
+  "matplotlib.pyplot",
+  "matplotlib",
+  "mlflow",
+  "sklearn.cluster",
+  "sklearn.datasets",
+  "sklearn.decomposition",
+  "sklearn.linear_model",
+  "sklearn.metrics",
+  "sklearn.model_selection",
+  "sklearn.pipeline",
+  "sklearn.preprocessing",
+  "sklearn",
+  "st_aggrid",
+]
+ignore_missing_imports = true
 
 # ========================================
 # PYDANTIC-MYPY
