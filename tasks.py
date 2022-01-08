@@ -1,5 +1,4 @@
-"""
-Tasks file for `invoke`.
+"""Tasks file for `invoke`.
 
 Notes:  Type-Hinting is not able to be used until
 https://github.com/pyinvoke/invoke/issues/357 is closed.
