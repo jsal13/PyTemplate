@@ -10,7 +10,7 @@ from invoke import task
 
 
 @task
-def docs(context) -> None:  # type: ignore
+def docs(context):  # type: ignore
     """Generate Sphinx documentation."""
     if os.name == "nt":  # if windows...
         context.run(".\\docs\\make.bat html")
@@ -19,25 +19,25 @@ def docs(context) -> None:  # type: ignore
 
 
 @task
-def test(context) -> None:  # type: ignore
+def test(context):  # type: ignore
     """Run Pytest."""
     context.run("pytest --cov=stuff tests/")
 
 
 @task
-def install_precommit(context) -> None:  # type: ignore
+def install_precommit(context):  # type: ignore
     """Install pre-commit into githooks."""
     context.run("pre-commit install")
 
 
 @task
-def tox(context) -> None:  # type: ignore
+def tox(context):  # type: ignore
     """Run Tox."""
     context.run("tox")
 
 
 @task(pre=[install_precommit])
-def init(_context) -> None:  # type: ignore
+def init(_context):  # type: ignore
     """Init the repository.
 
     - Install pre-commit hooks.
