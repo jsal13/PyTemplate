@@ -6,11 +6,11 @@ https://github.com/pyinvoke/invoke/issues/357 is closed.
 
 import os
 
-from invoke import Context, task
+from invoke import task
 
 
 @task
-def docs(context: Context) -> None:
+def docs(context) -> None:  # type: ignore
     """Generate Sphinx documentation."""
     if os.name == "nt":  # if windows...
         context.run(".\\docs\\make.bat html")
@@ -19,25 +19,25 @@ def docs(context: Context) -> None:
 
 
 @task
-def test(context: Context) -> None:
+def test(context) -> None:  # type: ignore
     """Run Pytest."""
     context.run("pytest --cov=stuff tests/")
 
 
 @task
-def install_precommit(context: Context) -> None:
+def install_precommit(context) -> None:  # type: ignore
     """Install pre-commit into githooks."""
     context.run("pre-commit install")
 
 
 @task
-def tox(context: Context) -> None:
+def tox(context) -> None:  # type: ignore
     """Run Tox."""
     context.run("tox")
 
 
 @task(pre=[install_precommit])
-def init(_context: Context) -> None:
+def init(_context) -> None:  # type: ignore
     """Init the repository.
 
     - Install pre-commit hooks.
