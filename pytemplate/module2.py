@@ -1,6 +1,11 @@
 """Create Graph Object from the Node and Edge objects in `module1`."""
+import logging
 
 from pytemplate.module1 import Edge, Node
+from pytemplate.utils import configure_logger
+
+configure_logger()
+_logger = logging.getLogger(__name__)
 
 
 class Graph:
@@ -31,6 +36,7 @@ class Graph:
 
     def count_nodes(self):
         """Compute the number of ``nodes``."""
+        _logger.info("Look at all those nodes!")
         return len(self.nodes)
 
     def has_an_edge(self, source: Node, dest: Node) -> bool:
@@ -53,3 +59,11 @@ class Graph:
             if edge.source == source and edge.dest == dest:
                 return True
         return False
+
+
+if __name__ == "__main__":
+    _nodes = [Node(0, 0, 1), Node(0, 1, 1), Node(1, 0, 1), Node(1, 1, 1)]
+    _edges = [Edge(_nodes[0], _nodes[1]), Edge(_nodes[1], _nodes[2])]
+    _graph = Graph(_nodes, _edges)
+
+    _graph.count_nodes()

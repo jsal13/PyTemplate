@@ -1,7 +1,12 @@
 """Sample Module."""
-
+import logging
 from dataclasses import dataclass
 from typing import Optional
+
+from pytemplate.utils import configure_logger
+
+configure_logger()
+_logger = logging.getLogger(__name__)
 
 
 @dataclass(frozen=True, eq=True)
@@ -24,3 +29,7 @@ class Edge:
 
     source: Node
     dest: Node
+
+
+if __name__ == "__main__":
+    _logger.info("Running module 1...")

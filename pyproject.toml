@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "PyTemplate"
+name = "pytemplate"
 version = "0.1.0"
 description = ""
 authors = ["James Salvatore <jimmy.c.salvatore@gmail.com>"]
