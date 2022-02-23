@@ -7,7 +7,8 @@
 ## Opinionated Code Process.
 There is a strong emphasis on linting and testing in this package, as well as CI/CD.  Roughly,
 
-```graph TD
+```mermaid
+graph TD
    A["New Script"]
    B["Write Code"]
    C["Auto Lint & Format"]
@@ -17,7 +18,7 @@ There is a strong emphasis on linting and testing in this package, as well as CI
    B --> |On Save| C --> B
    B --> |On Commit| D 
    D --> |On Push| E
-   ```
+```
 
 
 ## How Do I Use This?
