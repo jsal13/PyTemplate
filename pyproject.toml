@@ -45,6 +45,9 @@ max-line-length = "88"
 testpaths = ["tests"]
 ignore = [".tox", ".direnv", "python_venv"]
 
+[tool.pylint.LOGGING]
+disable=["logging-fstring-interpolation"]
+
 [tool.pylint.BASIC]
 good-names = [
   "i",
