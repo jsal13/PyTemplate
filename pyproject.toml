@@ -39,7 +39,7 @@ build-backend = "poetry.core.masonry.api"
 # > https://black.readthedocs.io/en/stable/guides/using_black_with_other_tools.html#pylint
 # ========================================
 [tool.pylint.format]
-max-line-length = "88"
+max-line-length = "110"
 
 [tool.pylint.ini_options]
 testpaths = ["tests"]
@@ -69,7 +69,15 @@ good-names = [
 ]
 
 [tool.pylint.messages_control]
-disable = "C0330, C0326"
+disable = [
+  "C0330", 
+  "C0326", 
+  "C0114", # missing-module-docstring
+  "C0115", # missing-class-docstring
+  "C0116", # missing-function-docstring
+  "R0902", # Too many instance attributes
+  "W0511", # TODO: fixme symbols.
+]
 
 
 # ========================================
@@ -90,35 +98,8 @@ no_implicit_reexport = true
 disallow_untyped_defs = true
 
 [[tool.mypy.overrides]]
-module = [
-  "altair",
-  "invoke",
-  "matplotlib.pyplot",
-  "matplotlib",
-  "mlflow",
-  "sklearn.cluster",
-  "sklearn.datasets",
-  "sklearn.decomposition",
-  "sklearn.linear_model",
-  "sklearn.metrics",
-  "sklearn.model_selection",
-  "sklearn.pipeline",
-  "sklearn.preprocessing",
-  "sklearn",
-  "st_aggrid",
-]
+module = []
 ignore_missing_imports = true
-
-# ========================================
-# PYDANTIC-MYPY
-# > Integrating pydantic into mypy.
-# ========================================
-[tool.pydantic-mypy]
-init_forbid_extra = true
-init_typed = true
-warn_required_dynamic_aliases = true
-warn_untyped_fields = true
-
 
 # ========================================
 # BLACK
@@ -126,9 +107,9 @@ warn_untyped_fields = true
 # ========================================
 [tool.black]
 target-version = ['py39']
+line-length = 110
 include = '\.pyi?$'
 exclude = '''
-
 (
   /(
       \.eggs         # exclude a few common directories in the
@@ -159,20 +140,20 @@ exclude = '''
 # > For standardized texting.
 # > https://tox.wiki/en/latest/example/basic.html#pyproject-toml-tox-legacy-ini
 # ========================================
-[tool.tox]
-legacy_tox_ini = """
-[tox]
-envlist = py39
-isolated_build = True
+# [tool.tox]
+# legacy_tox_ini = """
+# [tox]
+# envlist = py39
+# isolated_build = True
 
-[testenv]
-deps =
-  pytest
-  pytest-cov
+# [testenv]
+# deps =
+#   pytest
+#   pytest-cov
 
-commands = pytest --cov=pytemplate tests/
-    coverage report -m
-"""
+# commands = pytest --cov=mlpcli tests/
+#     coverage report -m
+# """
 
 
 # ========================================
@@ -204,7 +185,7 @@ skip = [
 ]
 
 skip_gitignore = true
-line_length = 88
+line_length = 110
 profile = "black"
 
 # ========================================
@@ -212,6 +193,9 @@ profile = "black"
 # > For linting docstrings.
 # > http://www.pydocstyle.org/en/stable/usage.html
 # ========================================
-[pydocstyle]
+[tool.pydocstyle]
 inherit = false
-# ignore = D100
+ignore = [
+  "D100" # Missing docstring in public module.
+]
+match = "*.py"
