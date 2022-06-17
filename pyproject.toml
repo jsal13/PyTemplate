@@ -151,7 +151,7 @@ deps =
   pytest
   pytest-cov
 
-commands = pytest --cov=pyproject tests/
+commands = pytest --cov=pytemplate tests/
     coverage report -m
 """
 
