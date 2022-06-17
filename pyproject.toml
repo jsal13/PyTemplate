@@ -151,7 +151,7 @@ deps =
   pytest
   pytest-cov
 
-commands = pytest --cov=mlpcli tests/
+commands = pytest --cov=pyproject tests/
     coverage report -m
 """
 
