@@ -42,7 +42,6 @@ build-backend = "poetry.core.masonry.api"
 max-line-length = "110"
 
 [tool.pylint.ini_options]
-testpaths = ["tests"]
 ignore = [".tox", ".direnv", "python_venv"]
 
 [tool.pylint.LOGGING]
