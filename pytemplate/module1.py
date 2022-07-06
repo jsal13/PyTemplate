@@ -1,4 +1,3 @@
-"""Sample Module."""
 import logging
 from dataclasses import dataclass
 from typing import Optional

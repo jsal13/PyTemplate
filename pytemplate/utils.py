@@ -1,5 +1,3 @@
-"""Various utilities for pytemplate."""
-
 import logging
 import logging.config
 

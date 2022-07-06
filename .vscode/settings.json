@@ -10,7 +10,7 @@
     "python.linting.pylintEnabled": true,
     "[python]": {
         "editor.rulers": [
-            88
+            110
         ],
         "editor.codeActionsOnSave": {
             "source.organizeImports": true

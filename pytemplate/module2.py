@@ -1,4 +1,3 @@
-"""Create Graph Object from the Node and Edge objects in `module1`."""
 import logging
 
 from pytemplate.module1 import Edge, Node
