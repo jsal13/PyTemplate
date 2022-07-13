@@ -16,7 +16,6 @@
             "source.organizeImports": true
         }
     },
-    "python.pythonPath": "C:\\Users\\james\\AppData\\Local\\pypoetry\\Cache\\virtualenvs\\pytemplate-wpiSOAJF-py3.9\\Scripts\\python.exe",
     "python.sortImports.args": [
         "--profile",
         "black"
